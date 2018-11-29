@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+
+</head>
+<body>
+
+<label for="giocatore_1">gino</label><br />
+<input type="number" name="giocatore_1"> <br />
+<label for="giocatore_2">pino</label><br />
+
+<div id="numero_uscito">RISULTATO</div>
+<button type="button" name="button" onclick="risultato()">gioca</button>
+<script type="text/javascript">
+
+  function getRndInteger(min, max) {
+      return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+  var risultato = getRndInteger(1, 10);
+
+function risultato() {
+document.getElementById('numero_uscito').innerHTML = "gino ha vinto";
+
+}
+
+
+</script>
+</body>
+</html>

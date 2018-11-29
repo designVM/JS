@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+<form class="" action="index.html" method="post" name="modulo">
+  <input type="text" name="nome" placeholder="Nome">
+  <input type="text" name="" placeholder="scrivi il tuo cognome">
+  <input type="password" name="password" placeholder="password">
+  <input type="password" name="conferma" placeholder="conferma password">
+  <input type="email" name="email" placeholder="scrivi la tua mail">
+  <input type="number" name="" placeholder="numero di telefono">
+  <input type="radio" name="sesso" value="M">
+  <input type="radio" name="sesso" value="F">
+  <select class="" name="citta">
+      <option>scegli la città</option>
+    <option value="TO">torino</option>
+        <option value="MI">milano</option>
+
+
+  </select>
+
+<button type="button" name="button" onclick="Modulo()">invia</button>
+</form>
+
+<script type="text/javascript">
+
+function Modulo() {
+
+  var nome = document.modulo.nome.value;
+    var password = document.modulo.password.value;
+  var passwordLong = document.modulo.password.value.length;
+  var conferma = document.modulo.conferma.value;
+  var email_reg_exp = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-]{2,})+.)+([a-zA-Z0-9]{2,})+$/;
+
+  if ((nome == "") || (nome == "undefined")) {
+		alert("Il campo Nome è obbligatorio.");
+		document.modulo.nome.focus();
+		return false;
+	}
+  else if (passwordLong < 8) {
+    alert("almeno 8 caratteri");
+    document.modulo.password.focus();
+    return false;
+  }
+
+  else if (password != conferma) {
+alert("le password non coincidono!");
+document.modulo.conferma.focus();
+return false;
+
+  }
+
+  else if (!email_reg_exp.test(email) || email == "") {
+    alert("inserire mail valida");
+    document.modulo.mail.focus();
+    return false;
+  }
+
+
+
+}
+</script>
+
+</body>
+</html>

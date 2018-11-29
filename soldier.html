@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  Nome: <input type ="text" id = "nome"><br/><br/>
+  Cognome:  <input type ="text" id = "cognome"><br/><br/>
+  E-mail: <input type ="email" id = "email"><br/><br/>
+  <input type = "button" id="button" onclick="hire()" value = "Submit"><br/>
+  <p id="output"></p>
+
+  inserisci numero contatto da eliminare<br />
+  <input type="text" name="" value="" id="deleteNumber"><br />
+  <button type="button" name="button" onclick="deleteContact()">cancella</button>
+
+  <br /><br /><br />
+
+  modifica contatto <br/>
+    Inserisci il numero del contatto da modificare: <input type="text" name="" value="" id="modifyNumber"><br />
+    Nome: <input type ="text" id = "nomeModify"><br/><br/>
+    Cognome:  <input type ="text" id = "cognomeModify"><br/><br/>
+    E-mail: <input type ="email" id = "emailModify"><br/><br/>
+      <button type="button" name="button" onclick="modifyContact()">cancella</button>
+
+  <script type="text/javascript">
+    var soldiers = [];
+
+function Soldier(nome, cognome, email){
+  this.nome = nome;
+  this.cognome = cognome;
+  this.email = email;
+  this.doReport = function () {
+    return "<td id ='nomeDef'>" + this.nome + "</td><td> " + this.cognome + "</td><td> " + this.email + "</td>";
+  }
+}
+
+function doReport() {
+   output = "";
+   for(var i = 0; i < soldiers.length; i++) {
+     var posizione = i+1
+      output += "<table><tr><td>" + posizione + ") </td> " + soldiers[i].doReport() + " </tr></table> ";
+   }
+   document.getElementById("output").innerHTML = output;
+}
+
+function hire() {
+  var soldier =  new Soldier(
+    document.getElementById("nome").value,
+    document.getElementById("cognome").value,
+    document.getElementById("email").value
+  );
+  soldiers.push(soldier);
+  doReport();
+}
+
+function deleteContact () {
+  var cancella = document.getElementById("deleteNumber");
+  var cancellaNumber = Number(cancella - 1);
+
+soldiers.splice(cancella, 1);
+output = "";
+for(var i = 0; i < soldiers.length; i++) {
+  var posizione = i+1
+   output += "<table><tr><td>" + posizione + ") </td> " + soldiers[i].doReport() + " </tr></table> ";
+}
+document.getElementById("output").innerHTML = output;
+
+}
+
+function modifyContact () {
+var modifica = document.getElementById("modifyNumber").value;
+var modificaNumber = Number(modifica - 1);
+
+var nomeModificato = document.getElementById("nomeModify").value;
+var cognomeModificato = document.getElementById("cognomeModify").value;
+var emailModificato = document.getElementById("emailModify").value;
+
+var soldierMod =  new Soldier(
+nomeModificato,
+cognomeModificato,
+emailModificato
+);
+
+soldiers.splice(modificaNumber, 1, soldierMod);
+
+output = "";
+for(var i = 0; i < soldiers.length; i++) {
+  var posizione = i+1
+   output += "<table><tr><td>" + posizione + ") </td> " + soldiers[i].doReport() + " </tr></table> ";
+}
+document.getElementById("output").innerHTML = output;
+
+
+}
+  </script>
+
+</body>
+</html>
